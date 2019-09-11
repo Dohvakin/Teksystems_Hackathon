@@ -1,0 +1,20 @@
+{% extends 'blog/base.html' %}
+{% block test %}
+{% if title %}
+    <title>{{ title }} - Home</title>
+{% else %}
+    <title>Event Ninja</title>
+{% endif %}
+{% endblock test %}
+
+{% block content %}
+<h3>Add a new Event by you {{ user.username }}</h3>
+<form method="POST">
+	{% csrf_token %}
+	<fieldset>
+		<legend>Post Event</legend>
+		{{ form.as_p }}
+	<br /><button type="submit">Post</button>
+	</fieldset>
+</form>
+{% endblock content %}

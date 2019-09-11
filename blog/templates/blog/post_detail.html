@@ -1,0 +1,36 @@
+﻿{% extends 'blog/base.html' %}
+{% load static %}
+{% block test %}
+{% if title %}
+    <title>{{ title }} - Home</title>
+{% else %}
+    <title>Event Ninja</title>
+{% endif %}
+{% endblock test %}
+
+{% block content %}
+
+
+<div class="designer_div">
+	<img src="{{ object.author.profile.image.url }}">
+	<div class="designer_div_content">
+		<h3>{{ object.title|upper }}</h3>
+		<p><h3>{{ object.date_posted }}</h3>
+		<h2>{{ object.author }}</h2>
+		<p>{{ object.content }}</p>
+    <table>
+      <tr>
+      <td><button type="button" name="Join event">Join event</button></td>
+		</tr></table>
+
+		{% if user.is_authenticated and user == object.author %}
+		<table><tr>
+			<td><a href="{% url 'post-update' object.id %}">Edit Post</a></td>
+			<td><a href="{% url 'post-delete' object.id %}">Delete Post</td>
+		</tr></table>
+	{% endif %}
+	</div>
+	<div class="clear">&nbsp;</div>
+</div>
+
+{% endblock content %}

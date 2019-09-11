@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+{% block test %}
+{% if title %}
+    <title>{{ title }} - Home</title>
+{% else %}
+    <title>Event Ninja</title>
+{% endif %}
+{% endblock test %}
+
+{% block content %}
+<h3>Event Ninja - About Page</h3>
+<p>Here we are coming up with an application that will provide connectivity between people, can help people host and advertise various activities and let people find the activities of their interest.
+.</p>
+<p>People can not only use the app to host and invite people but can also provide details of the activity and provide the exact location of the activity venue for feasibility. Other interested users can see the list of various events and activity being organised and choose according to their interests and also talk to the organisers and follow them for future events.</p>
+{% endblock content %}

@@ -1,0 +1,29 @@
+﻿{% extends 'blog/base.html' %}
+{% load static %}
+{% block test %}
+{% if title %}
+    <title>{{ title }} - Home</title>
+{% else %}
+    <title>Event Ninja</title>
+{% endif %}
+{% endblock test %}
+{% block content %}
+<h3 style="float:left">Event NInja"</h3>
+<hr />
+{% for i in post %}
+
+<div class="designer_div">
+	<a href="{% url 'post-detail' i.id %}">
+	<h4>{{ i.title }}</h4>
+	<p>{{ i.content|truncatewords:30 }}</p>
+	<p>By {{ i.author }}, posted on {{ i.date_posted }}</p>
+	</a>
+	{% if user.is_authenticated and user == i.author %}
+		<table><tr>
+			<td><a href="{% url 'post-update' i.id %}">Edit Post</a></td>
+			<td><a href="{% url 'post-delete' i.id %}">Delete Post</td>
+		</tr></table>
+	{% endif %}
+</div>
+{% endfor %}
+{% endblock content %}
