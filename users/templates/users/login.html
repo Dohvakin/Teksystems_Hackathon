@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+{% block test %}
+{% if title %}
+    <title>{{ title }} Event Ninja Bhopal</title>
+{% else %}
+    <title>Welcome to Event Ninja</title>
+{% endif %}
+{% endblock test %}
+
+{% block content %}
+<h3>Event Ninja - User Login Page</h3>
+<form method="POST">
+	{% csrf_token %}
+	<fieldset>
+		<legend>Login</legend>
+		{{ form.as_p }}
+	<br /><button type="submit">Sign In</button>
+	</fieldset>
+
+	<fieldset>
+		<legend>Need an Account</legend>
+		<p>Create a account today...</p>
+		<p><a href="{% url 'register' %}" id="logsin">Sign up</a>
+	</fieldset>
+{% endblock content %}

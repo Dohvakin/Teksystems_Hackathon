@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+{% block test %}
+{% if title %}
+    <title>{{ title }} Event Ninja Bhopal</title>
+{% else %}
+    <title>Welcome to Event Ninja</title>
+{% endif %}
+{% endblock test %}
+
+{% block content %}
+<h3>View/Edit Profile Details</h3>
+<img style="border-radius:400px;width:20%" src="{{ user.profile.image.url }}">
+<h4>{{ user.username }}</h4>
+<h4 id="h4">My Events:</h4>
+{% for i in posts %}
+
+<div class="designer_div">
+	<a href="{% url 'post-detail' i.id %}">
+	<h4>{{ i.title }}</h4>
+	<p>{{ i.content|truncatewords:30 }}</p>
+	<p>By {{ i.author }}, posted on {{ i.date_posted }}</p>
+	</a>
+</div>
+{% endfor %}
+{% endblock content %}
